@@ -1,0 +1,166 @@
+/* ===== 頁面背景 ===== */
+main {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+/* ===== 主卡片 ===== */
+.quiz-container {
+  width: 100%;
+  max-width: 520px;
+  background-color: #ffffff;
+  border-radius: 18px;
+  padding: 32px 28px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  animation: fadeIn 0.4s ease;
+}
+
+/* ===== 標題 ===== */
+.quiz-title {
+  text-align: center;
+  margin-bottom: 8px;
+  font-size: 24px;
+}
+
+/* ===== 模式 / 難度 ===== */
+.meta {
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* ===== 回首頁 ===== */
+.back-btn {
+  display: block;
+  margin: 0 auto 20px;
+  background: none;
+  border: none;
+  color: #4f46e5;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  text-decoration: underline;
+}
+
+/* ===== 中文提示 ===== */
+.hint {
+  background-color: #f1f5f9;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+/* ===== 句子 ===== */
+.sentence {
+  font-size: 22px;
+  text-align: center;
+  margin: 24px 0;
+  font-weight: 500;
+}
+
+/* ===== 選項 ===== */
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ===== 選項按鈕 ===== */
+.option-btn {
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 12px;
+  border: 2px solid #e5e7eb;
+  background-color: #f9fafb;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.option-btn:hover {
+  background-color: #eef2ff;
+  border-color: #6366f1;
+}
+
+.option-btn.correct {
+  background-color: #dcfce7;
+  border-color: #22c55e;
+  color: #166534;
+}
+
+.option-btn.wrong {
+  background-color: #fee2e2;
+  border-color: #ef4444;
+  color: #7f1d1d;
+}
+
+.option-btn:disabled {
+  cursor: not-allowed;
+}
+
+/* ===== 結果區 ===== */
+.result {
+  margin-top: 24px;
+  padding: 16px;
+  border-radius: 14px;
+  background-color: #f8fafc;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* ===== 解釋 ===== */
+.explanation {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #374151;
+  text-align: left;
+}
+
+/* ===== 結果按鈕 ===== */
+.result button {
+  margin-top: 12px;
+  padding: 8px 14px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: none;
+  background-color: #4f46e5;
+  color: white;
+  cursor: pointer;
+}
+
+.result button:hover {
+  background-color: #4338ca;
+}
+
+/* ===== 動畫 ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== 手機優化 ===== */
+@media (max-width: 480px) {
+  .sentence {
+    font-size: 20px;
+  }
+
+  .quiz-container {
+    padding: 24px 20px;
+  }
+}

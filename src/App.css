@@ -1,0 +1,52 @@
+/* ===== 整體容器 ===== */
+.main-area{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+h1{
+  max-width: 420px;
+  margin: 10px auto;
+  font-size: 40px;
+}
+
+.mode-container {
+  max-width: 420px;
+  margin: 10px auto;
+  padding: 32px;
+  background-color: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+/* ===== 標題 ===== */
+.mode-container h2 {
+  margin-bottom: 24px;
+  font-size: 22px;
+}
+
+/* ===== 模式按鈕 ===== */
+.mode-container button {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: none;
+  background-color: #f2f2f2;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.mode-container button:hover {
+  background-color: #e0e0e0;
+}
+
+.mode-container button:active {
+  transform: scale(0.97);
+}

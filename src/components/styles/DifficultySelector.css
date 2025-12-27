@@ -1,0 +1,23 @@
+/* ===== 難度選擇區塊 ===== */
+.difficulty-selector {
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.difficulty-selector label {
+  font-size: 14px;
+  margin-right: 8px;
+}
+
+.difficulty-selector select {
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.difficulty-selector select:focus {
+  border-color: #666;
+}
