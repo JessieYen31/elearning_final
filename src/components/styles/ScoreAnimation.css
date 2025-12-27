@@ -1,0 +1,85 @@
+.score-animation {
+  position: absolute;
+  left: 100%;
+  margin-left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  z-index: 100;
+  white-space: nowrap;
+  opacity: 1;
+}
+
+@media (max-width: 1200px) {
+  .score-animation {
+    margin-left: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .score-animation {
+    position: static;
+    transform: none;
+    margin-top: 12px;
+    margin-left: 0;
+    justify-content: center;
+    left: auto;
+  }
+}
+
+.score-popup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  animation: scorePop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transform-origin: center;
+  opacity: 1;
+}
+
+.score-icon {
+  font-size: 32px;
+  animation: iconSpin 0.8s ease;
+}
+
+.score-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: #10b981;
+}
+
+.bonus-text {
+  font-size: 14px;
+  color: #f59e0b;
+  margin-left: 8px;
+  font-weight: 500;
+}
+
+@keyframes scorePop {
+  0% {
+    transform: scale(0) rotate(-180deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1) rotate(5deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes iconSpin {
+  0% {
+    transform: rotate(0deg) scale(0);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.2);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+

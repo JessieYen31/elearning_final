@@ -1,52 +1,203 @@
-/* ===== 整體容器 ===== */
-.main-area{
+/* ===== 整體容器 - 滿版設計 ===== */
+.main-area {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #93c5fd 100%);
+  padding: 40px 20px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
-h1{
-  max-width: 420px;
-  margin: 10px auto;
-  font-size: 40px;
-}
 
-.mode-container {
-  max-width: 420px;
-  margin: 10px auto;
-  padding: 32px;
-  background-color: #ffffff;
-  border-radius: 14px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+/* ===== 頁首 ===== */
+.home-header {
   text-align: center;
-  font-family: Arial, sans-serif;
+  margin-bottom: 50px;
+  color: white;
+  animation: fadeInDown 0.6s ease;
 }
 
-/* ===== 標題 ===== */
-.mode-container h2 {
-  margin-bottom: 24px;
-  font-size: 22px;
+.main-title {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  color: #1e3a8a;
 }
 
-/* ===== 模式按鈕 ===== */
-.mode-container button {
+/* ===== 回合網格 ===== */
+.rounds-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
   width: 100%;
-  padding: 12px;
-  margin-bottom: 12px;
-  font-size: 16px;
-  border-radius: 10px;
-  border: none;
-  background-color: #f2f2f2;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ===== 回合卡片 ===== */
+.round-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 28px;
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border: 3px solid transparent;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.6s ease;
 }
 
-.mode-container button:hover {
-  background-color: #e0e0e0;
+.round-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+  border-color: #667eea;
 }
 
-.mode-container button:active {
-  transform: scale(0.97);
+.round-card.selected {
+  border-color: #10b981;
+  background: linear-gradient(135deg, #d1fae5 0%, #ffffff 100%);
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
+}
+
+/* ===== 回合編號 ===== */
+.round-number {
+  font-size: 24px;
+  font-weight: bold;
+  color: #667eea;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.round-card.selected .round-number {
+  color: #10b981;
+}
+
+.round-number::before {
+  content: '🎯';
+  font-size: 28px;
+}
+
+/* ===== 回合主題文字 ===== */
+.round-theme-text {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: 500;
+  line-height: 1.5;
+  min-height: 54px;
+}
+
+.round-card.selected .round-theme-text {
+  color: #065f46;
+}
+
+/* ===== 開始按鈕 ===== */
+.round-start-btn {
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 12px;
+  border: none;
+  background-color: #f97316;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+}
+
+.round-card.selected .round-start-btn {
+  background-color: #10b981;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.round-start-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
+  background-color: #ea580c;
+}
+
+.round-card.selected .round-start-btn:hover {
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+  background-color: #059669;
+}
+
+.round-start-btn:active {
+  transform: scale(0.98);
+}
+
+/* ===== 動畫 ===== */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== 手機優化 ===== */
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 36px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .rounds-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 0 10px;
+  }
+
+  .round-card {
+    padding: 20px;
+  }
+
+  .round-number {
+    font-size: 20px;
+  }
+
+  .round-theme-text {
+    font-size: 16px;
+    min-height: 48px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-area {
+    padding: 20px 10px;
+  }
+
+  .home-header {
+    margin-bottom: 30px;
+  }
+
+  .main-title {
+    font-size: 28px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
 }

@@ -1,0 +1,35 @@
+/* ===== 回合選擇區塊 ===== */
+.round-selector {
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.round-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.round-selector select {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: 2px solid #e5e7eb;
+  outline: none;
+  background-color: white;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.round-selector select:focus {
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.round-selector select:hover {
+  border-color: #10b981;
+}
+

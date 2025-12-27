@@ -1,38 +1,54 @@
 import { useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import DifficultySelector from "./components/DifficultySelector.jsx";
-import QuizPage from "./page/QuizPage.jsx"; // 若路徑不同請改成 ./page/QuizPage.jsx
+import { ROUND_THEMES } from "./components/RoundSelector.jsx";
+import QuizPage from "./page/QuizPage.jsx";
+import ResultPage from "./page/ResultPage.jsx";
 import "./App.css";
 
-function ModeSelector({ onStart, difficulty, setDifficulty }) {
+function ModeSelector({ onStart, round, setRound }) {
   const navigate = useNavigate();
 
-  const go = (mode) => {
-    if (typeof onStart === "function") onStart(mode);
-    navigate("/quiz", { state: { mode, difficulty } });
+  const go = (selectedRound) => {
+    if (typeof onStart === "function") onStart(selectedRound);
+    navigate("/quiz", { state: { round: selectedRound } });
   };
 
   return (
     <main className="main-area">
-      <h1>簡易英文測試</h1>
-      <div className="mode-container">
-        <h2>📚 請選擇學習模式</h2>
+      <div className="home-header">
+        <h1 className="main-title">🎓 英文學習挑戰</h1>
+      </div>
 
-        <DifficultySelector value={difficulty} onChange={setDifficulty} />
-
-        <button onClick={() => go("all")}>1️⃣ 全部</button>
-        <button onClick={() => go("vocabulary")}>2️⃣ 單字</button>
-        <button onClick={() => go("phrase")}>3️⃣ 片語</button>
-        <button onClick={() => go("preposition")}>4️⃣ 介系詞</button>
+      <div className="rounds-grid">
+        {Object.entries(ROUND_THEMES).map(([roundNum, theme], index) => (
+          <div
+            key={roundNum}
+            className={`round-card ${Number(roundNum) === round ? "selected" : ""}`}
+            onClick={() => setRound(Number(roundNum))}
+            style={{ animationDelay: `${index * 0.1}s` }}
+          >
+            <div className="round-number">第 {roundNum} 回合</div>
+            <div className="round-theme-text">{theme}</div>
+            <button
+              className="round-start-btn"
+              onClick={(e) => {
+                e.stopPropagation();
+                go(Number(roundNum));
+              }}
+            >
+              開始挑戰 →
+            </button>
+          </div>
+        ))}
       </div>
     </main>
   );
 }
 
 export default function App() {
-  const [difficulty, setDifficulty] = useState("easy");
-  const handleStart = (mode) => {
-    console.log("Quiz start:", mode, "difficulty:", difficulty);
+  const [round, setRound] = useState(1);
+  const handleStart = (round) => {
+    console.log("Quiz start:", "round:", round);
   };
 
   return (
@@ -40,14 +56,15 @@ export default function App() {
       <Route
         path="/"
         element={
-          <ModeSelector
-            onStart={handleStart}
-            difficulty={difficulty}
-            setDifficulty={setDifficulty}
-          />
+        <ModeSelector
+          onStart={handleStart}
+          round={round}
+          setRound={setRound}
+        />
         }
       />
       <Route path="/quiz" element={<QuizPage />} />
+      <Route path="/result" element={<ResultPage />} />
       <Route path="*" element={<div>Not found</div>} />
     </Routes>
   );
