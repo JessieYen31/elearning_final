@@ -3,6 +3,8 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import { ROUND_THEMES } from "./components/RoundSelector.jsx";
 import QuizPage from "./page/QuizPage.jsx";
 import ResultPage from "./page/ResultPage.jsx";
+import RecordPage from "./page/RecordPage.jsx";
+import DetailPage from "./page/DetailPage.jsx";
 import "./App.css";
 
 function ModeSelector({ onStart, round, setRound }) {
@@ -41,6 +43,15 @@ function ModeSelector({ onStart, round, setRound }) {
           </div>
         ))}
       </div>
+
+      <div className="record-button-container">
+        <button
+          className="record-button"
+          onClick={() => navigate("/record")}
+        >
+          📚 學習紀錄
+        </button>
+      </div>
     </main>
   );
 }
@@ -65,6 +76,8 @@ export default function App() {
       />
       <Route path="/quiz" element={<QuizPage />} />
       <Route path="/result" element={<ResultPage />} />
+      <Route path="/record" element={<RecordPage />} />
+      <Route path="/detail" element={<DetailPage />} />
       <Route path="*" element={<div>Not found</div>} />
     </Routes>
   );

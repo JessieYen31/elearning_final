@@ -18,6 +18,7 @@ export default function QuizPage() {
   const [consecutiveCorrect, setConsecutiveCorrect] = useState(0);
   const [showScoreAnimation, setShowScoreAnimation] = useState(false);
   const [animationPoints, setAnimationPoints] = useState(0);
+  const [answerDetails, setAnswerDetails] = useState([]); // 記錄每題的答題詳情
 
   // ✅ 根據回合取得題目清單
   const questions = useMemo(() => {
@@ -78,6 +79,21 @@ export default function QuizPage() {
     }
 
     setSelected(answerIndex);
+
+    // 記錄答題詳情
+    const detail = {
+      questionId: question.id,
+      hint: question.hint,
+      sentence: question.sentence,
+      fullSentence: question.fullSentence,
+      options: question.options,
+      userAnswer: answerIndex,
+      correctAnswer: question.correctIndex,
+      isCorrect: isCorrect,
+      explanation: question.explanation
+    };
+    
+    setAnswerDetails(prev => [...prev, detail]);
   };
 
   // 處理下一題
@@ -89,7 +105,8 @@ export default function QuizPage() {
           score,
           totalQuestions: questions.length,
           correctCount,
-          round
+          round,
+          answerDetails // 傳遞答題詳情
         }
       });
     } else {

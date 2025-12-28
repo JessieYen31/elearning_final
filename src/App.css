@@ -58,7 +58,7 @@
 
 .round-card.selected {
   border-color: #10b981;
-  background: linear-gradient(135deg, #d1fae5 0%, #ffffff 100%);
+  background: rgba(255, 255, 255, 0.95);
   box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
 }
 
@@ -108,22 +108,22 @@
   color: white;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+  box-shadow: none;
 }
 
 .round-card.selected .round-start-btn {
   background-color: #10b981;
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  box-shadow: none;
 }
 
 .round-start-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
+  box-shadow: none;
   background-color: #ea580c;
 }
 
 .round-card.selected .round-start-btn:hover {
-  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+  box-shadow: none;
   background-color: #059669;
 }
 
@@ -182,6 +182,34 @@
     font-size: 16px;
     min-height: 48px;
   }
+}
+
+/* ===== 學習紀錄按鈕 ===== */
+.record-button-container {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  max-width: 1400px;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.record-button {
+  padding: 16px 40px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 12px;
+  border: none;
+  background-color: #dbeafe;
+  color: #1e40af;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: none;
+}
+
+.record-button:hover {
+  background-color: #bfdbfe;
+  transform: translateY(-2px);
 }
 
 @media (max-width: 480px) {

@@ -318,13 +318,13 @@ main {
   color: white;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+  box-shadow: none;
 }
 
 .next-btn:hover {
   background-color: #ea580c;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
+  box-shadow: none;
 }
 
 /* ===== 回首頁按鈕 ===== */

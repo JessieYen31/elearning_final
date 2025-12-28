@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ROUND_THEMES } from "../components/RoundSelector.jsx";
 import "./ResultPage.css";
@@ -6,7 +7,25 @@ export default function ResultPage() {
   const { state } = useLocation();
   const navigate = useNavigate();
 
-  const { score, totalQuestions, correctCount, round } = state || {};
+  const { score, totalQuestions, correctCount, round, answerDetails } = state || {};
+
+  // 保存學習紀錄到 localStorage
+  useEffect(() => {
+    if (round && score !== undefined) {
+      const savedRecords = localStorage.getItem("learningRecords");
+      const records = savedRecords ? JSON.parse(savedRecords) : {};
+      
+      records[round] = {
+        score,
+        correctCount,
+        totalQuestions,
+        timestamp: Date.now(),
+        answerDetails: answerDetails || [] // 保存答題詳情
+      };
+      
+      localStorage.setItem("learningRecords", JSON.stringify(records));
+    }
+  }, [round, score, correctCount, totalQuestions, answerDetails]);
 
   // 計算正確率
   const accuracy = totalQuestions > 0 
@@ -84,12 +103,18 @@ export default function ResultPage() {
             <div className="stat-label">正確率</div>
           </div>
 
-          <div className="stat-card">
+          <div 
+            className="stat-card stat-card-clickable"
+            onClick={() => answerDetails && answerDetails.length > 0 && navigate("/detail", { state: { answerDetails, round, score } })}
+            style={{ cursor: answerDetails && answerDetails.length > 0 ? 'pointer' : 'default' }}
+          >
             <div className="stat-icon">⭐</div>
             <div className="stat-value">
               {score}<span className="score-max">/60</span>
             </div>
-            <div className="stat-label">總分</div>
+            <div className="stat-label">
+              總分{answerDetails && answerDetails.length > 0 && <span className="click-hint">（點擊查看詳情）</span>}
+            </div>
           </div>
         </div>
 
@@ -111,6 +136,12 @@ export default function ResultPage() {
             onClick={() => navigate("/")}
           >
             ← 回首頁
+          </button>
+          <button
+            className="btn-secondary"
+            onClick={() => navigate("/record")}
+          >
+            📚 學習紀錄
           </button>
         </div>
       </div>
