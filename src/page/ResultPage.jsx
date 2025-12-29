@@ -105,7 +105,7 @@ export default function ResultPage() {
 
           <div 
             className="stat-card stat-card-clickable"
-            onClick={() => answerDetails && answerDetails.length > 0 && navigate("/detail", { state: { answerDetails, round, score } })}
+            onClick={() => answerDetails && answerDetails.length > 0 && navigate("/detail", { state: { answerDetails, round, score, correctCount, totalQuestions } })}
             style={{ cursor: answerDetails && answerDetails.length > 0 ? 'pointer' : 'default' }}
           >
             <div className="stat-icon">⭐</div>

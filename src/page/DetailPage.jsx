@@ -6,7 +6,7 @@ export default function DetailPage() {
   const { state } = useLocation();
   const navigate = useNavigate();
 
-  const { answerDetails, round, score } = state || {};
+  const { answerDetails, round, score, correctCount, totalQuestions } = state || {};
 
   if (!answerDetails || answerDetails.length === 0) {
     return (
@@ -15,7 +15,7 @@ export default function DetailPage() {
           <div className="detail-header">
             <h1 className="detail-title">📋 答題詳情</h1>
             <p>沒有答題記錄</p>
-            <button className="btn-back" onClick={() => navigate("/result", { state })}>
+            <button className="btn-back" onClick={() => navigate("/result", { state: { answerDetails, round, score, correctCount, totalQuestions } })}>
               ← 返回結果
             </button>
           </div>
@@ -86,7 +86,7 @@ export default function DetailPage() {
         </div>
 
         <div className="detail-buttons">
-          <button className="btn-back" onClick={() => navigate("/result", { state })}>
+          <button className="btn-back" onClick={() => navigate("/result", { state: { answerDetails, round, score, correctCount, totalQuestions } })}>
             ← 返回結果
           </button>
         </div>

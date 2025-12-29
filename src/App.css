@@ -184,17 +184,19 @@
   }
 }
 
-/* ===== 學習紀錄按鈕 ===== */
-.record-button-container {
+/* ===== 首頁底部按鈕 ===== */
+.home-bottom-buttons {
   margin-top: 50px;
   display: flex;
   justify-content: center;
+  gap: 20px;
   max-width: 1400px;
   width: 100%;
   padding: 0 20px;
+  flex-wrap: wrap;
 }
 
-.record-button {
+.home-bottom-btn {
   padding: 16px 40px;
   font-size: 18px;
   font-weight: 600;
@@ -207,7 +209,7 @@
   box-shadow: none;
 }
 
-.record-button:hover {
+.home-bottom-btn:hover {
   background-color: #bfdbfe;
   transform: translateY(-2px);
 }

@@ -5,6 +5,7 @@ import QuizPage from "./page/QuizPage.jsx";
 import ResultPage from "./page/ResultPage.jsx";
 import RecordPage from "./page/RecordPage.jsx";
 import DetailPage from "./page/DetailPage.jsx";
+import MaterialsPage from "./page/MaterialsPage.jsx";
 import "./App.css";
 
 function ModeSelector({ onStart, round, setRound }) {
@@ -44,12 +45,18 @@ function ModeSelector({ onStart, round, setRound }) {
         ))}
       </div>
 
-      <div className="record-button-container">
+      <div className="home-bottom-buttons">
         <button
-          className="record-button"
+          className="home-bottom-btn"
           onClick={() => navigate("/record")}
         >
           📚 學習紀錄
+        </button>
+        <button
+          className="home-bottom-btn"
+          onClick={() => navigate("/materials")}
+        >
+          📖 切換教材
         </button>
       </div>
     </main>
@@ -78,6 +85,7 @@ export default function App() {
       <Route path="/result" element={<ResultPage />} />
       <Route path="/record" element={<RecordPage />} />
       <Route path="/detail" element={<DetailPage />} />
+      <Route path="/materials" element={<MaterialsPage />} />
       <Route path="*" element={<div>Not found</div>} />
     </Routes>
   );
